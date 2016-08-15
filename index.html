@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+  <html lang="es">
+     <head>
+     	<title>React crear componente basico</title>
+     	<link rel="stylesheet" type="text/css" href="css/styles.css">
+     	<script src="https://fb.me/react-0.13.3.min.js"></script>
+      <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>        
+     </head>
+     <body>
+       <section id="user"></section>
+       <script type="text/jsx">
+      var User = React.createClass({               
+        getInitialState : function(){
+        return {                      
+            username : "@Desarrollador web",
+            avatar  : "imagen01.jpg",
+            description : "Desarrollador web"
+        }
+      },
+      changeUser: function(){               
+        this.setState({
+           username : "Desarrollador frontend",
+           avatar : "imagen02.jpg",
+           description:"Desarrollador frontend"
+        })
+      },
+
+      render : function(){
+        var image = "./images/"+this.state.avatar;
+        return (                 
+         <article className="User" onClick={this.changeUser}>
+         	  <img src={image} className="User-avatar" width="100" />
+            <div className="User-description">
+            	<p className="User-name">{this.state.username}</p>
+              <p>{this.state.description}</p>
+            </div>
+         </article>
+        )
+        } 
+      })
+      React.render(<User/>, document.getElementById('user'))
+     </script>        	
+     </body>
+  </html>
+</html>
